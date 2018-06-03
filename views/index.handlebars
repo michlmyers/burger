@@ -1,0 +1,61 @@
+<div class="container">
+
+
+    <h1>Check out my burgers</h1>
+
+    <h2>Here you can click to devour a delicious burger. You can also create your own burger to be devoured!
+    </h2>
+
+    <div class="eaten">
+        <h3>Eaten Burgers</h3>
+        <ul>
+            {{#each burgers}} {{#unless this.devoured}}
+            <li>
+                {{this.burger_name}}
+
+                <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
+                    <input type="hidden" name="devoured" value="1">
+                    <button class="btn" type="submit">STUFF IT</button>
+                </form>
+            </li>
+            {{/unless}} {{/each}}
+        </ul>
+    </div>
+
+    <div class="prepared">
+        <h3>Ready to eat!</h3>
+        <ul>
+            {{#each burgers}} {{#if this.devoured}}
+            <li>
+                {{this.burger_name}}
+
+                <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
+                    <input type="hidden" name="devoured" value="0">
+                    <button class="btn" type="submit">NOM</button>
+                </form>
+            </li>
+            {{/if}} {{/each}}
+        </ul>
+    </div>
+
+    <div class="cook">
+        <h3>Go ahead, create a burger</h3>
+        <form class="create" action="burgers/create" method="POST"></form>
+
+        <div class="cookForms">
+            <label for="cookedName">Burger Name </label>
+            <input type="text" id="cookedName" name="burger_name">
+        </div>
+
+        <div class="cookForms">
+            <label for="">Eaten?</label>
+            <input type="radio" name="devoured" value="0" checked> Eaten
+            <br>
+            <input type="radio" name="devoured" value="1" checked> Not Eaten
+        </div>
+
+        <button type="submit" class="btn">Cook Burger</button>
+        </form>
+    </div>
+
+</div>
