@@ -8,7 +8,8 @@ var bodyParser = require('body-parser');
 //     res.redirect('/burgers');
 // });
 
-router.get('/burgers', function(req, res) {
+// removed /burgers from get
+router.get('/', function(req, res) {
     burger.selectAll(function(data){
         var hbsObject = {
             burgers: data

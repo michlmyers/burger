@@ -29,8 +29,8 @@ function objToSql(ob) {
 
 var orm = {
 
-    selectAll: function (tableInput, cb) {
-        var queryString = 'SELECT * FROM' + tableInput + ';';
+    selectAll: function (table, cb) {
+        var queryString = 'SELECT * FROM' + table + ';';
         connection.query(queryString, function (err, result) {
             if (err) {
                 throw err;
@@ -39,9 +39,16 @@ var orm = {
         });
     },
     // changed function parameters to from table, burger_name, devoured, cb
+    // maybe print question here
     insertOne: function (table, cols, vals, cb) {
-        var queryString = 'INSERT INTO' + table + ' (burger_name, devoured)';
-        queryString += 'VALUES ("' + burger_name + '", ' + devoured + ');';
+        var queryString = 'INSERT INTO' + table;
+        queryString += ' (';
+        queryString += cols.toString();
+        queryString += ') ';
+        queryString += 'VALUES (';
+        queryString += printQuestionMarks(vals.length);
+        queryString += ') '; 
+        // + burger_name + '", ' + devoured + ');';
 
         console.log(queryString);
 
