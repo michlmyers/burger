@@ -4,9 +4,9 @@ var burger = require('../models/burger.js');
 
 var bodyParser = require('body-parser');
 
-router.get('/', function(req,res) {
-    res.redirect('/burgers');
-});
+// router.get('/', function(req,res) {
+//     res.redirect('/burgers');
+// });
 
 router.get('/burgers', function(req, res) {
     burger.selectAll(function(data){
