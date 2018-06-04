@@ -2,12 +2,6 @@ var express = require('express');
 var router = express.Router();
 var burger = require('../models/burger.js');
 
-var bodyParser = require('body-parser');
-
-// router.get('/', function(req,res) {
-//     res.redirect('/burgers');
-// });
-
 // removed /burgers from get
 router.get('/', function(req, res) {
     burger.selectAll(function(data){
