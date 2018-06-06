@@ -14,9 +14,10 @@ router.get('/', function(req, res) {
 });
 
 router.post('/burgers/create', function(req, res) {
-    burger.insertOne(req.body.burger_name, req.body.devoured, function(data) {
+    burger.insertOne(['burger_name','devoured'],
+    [req.body.burger_name, req.body.devoured], 
+    function(data) {
         res.json({ id: data.inserId});
-        // res.redirect('/');
     });
 });
 
