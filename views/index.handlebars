@@ -7,7 +7,7 @@
     </h2>
 
     <div class="eaten">
-        <h3>Eaten Burgers</h3>
+        <h3>We already ate these burgers, click to hide the guilt!</h3>
         <ul>
             {{#each burgers}} {{#unless this.devoured}}
             <li>
@@ -15,7 +15,7 @@
 
                 <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
                     <input type="hidden" name="devoured" value="1">
-                    <button class="btn" type="submit">STUFF IT</button>
+                    <button class="btn" type="submit">SPARE ME</button>
                 </form>
             </li>
             {{/unless}} {{/each}}
@@ -23,7 +23,7 @@
     </div>
 
     <div class="prepared">
-        <h3>Ready to eat!</h3>
+        <h3>Devour one of these delicious burgers!</h3>
         <ul>
             {{#each burgers}} {{#if this.devoured}}
             <li>
@@ -31,7 +31,7 @@
 
                 <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
                     <input type="hidden" name="devoured" value="0">
-                    <button class="btn" type="submit">NOM</button>
+                    <button class="btn" type="submit">NOM NOM</button>
                 </form>
             </li>
             {{/if}} {{/each}}
