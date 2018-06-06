@@ -30,7 +30,7 @@ function objToSql(ob) {
 var orm = {
 
     selectAll: function (table, cb) {
-        var queryString = 'SELECT * FROM' + table + ';';
+        var queryString = 'SELECT * FROM ' + table + ';';
         connection.query(queryString, function (err, result) {
             if (err) {
                 throw err;
@@ -41,7 +41,7 @@ var orm = {
     // changed function parameters to from table, burger_name, devoured, cb
     // maybe print question here
     insertOne: function (table, cols, vals, cb) {
-        var queryString = 'INSERT INTO' + table;
+        var queryString = 'INSERT INTO ' + table;
         queryString += ' (';
         queryString += cols.toString();
         queryString += ') ';
@@ -60,7 +60,7 @@ var orm = {
         });
     },
     updateOne: function (table, objColVals, condition, cb) {
-        var queryString = 'UPDATE' + table;
+        var queryString = 'UPDATE ' + table;
 
         queryString += ' SET ';
         queryString += objToSql(objColVals);
