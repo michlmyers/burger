@@ -14,10 +14,12 @@ router.get('/', function(req, res) {
 });
 
 router.post('/burgers/create', function(req, res) {
-    burger.insertOne(['burger_name','devoured'],
-    [req.body.burger_name, req.body.devoured], 
-    function(data) {
-        res.json({ id: data.inserId});
+    burger.insertOne([
+        'burger_name', 'devoured'
+    ], [
+    req.body.burger_name, req.body.devoured
+    ], function(result) {
+        res.json({ id: result.insertId});
     });
 });
 
