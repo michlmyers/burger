@@ -2,19 +2,14 @@ $(function() {
 
   $(".change-devoured").on("click", function(event) {
     var id = $(this).data("id");
-    var newDevoured = $(this).data(0);
-
-    var newDevouredState = {
-      devoured: newDevoured
-    };
 
     // Send the PUT request.
     $.ajax("/api/burgers/" + id, {
       type: "PUT",
-      data: newDevouredState
+      data: {"devoured": 0}
     }).then(
       function() {
-        console.log("changed devoured to", newDevoured);
+        console.log("changed devoured to ", true);
         // Reload the page to get the updated list
         location.reload();
       }
@@ -50,7 +45,7 @@ $(function() {
       var id = $(this).data("id");
   
       // Send the DELETE request.
-      $.ajax("/burgers/update/:" + id, {
+      $.ajax("api/burgers/" + id, {
         type: "DELETE"
       }).then(
         function() {
